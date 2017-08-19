@@ -10,6 +10,7 @@ public class Link {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name = "link_id")
     private Integer id;
     private String name;
     private String url;
@@ -17,12 +18,12 @@ public class Link {
 
     @ManyToMany
     @JoinTable(name = "Flag",
-            joinColumns = @JoinColumn(name = "id"),
-            inverseJoinColumns = @JoinColumn(name = "id"))
+            joinColumns = @JoinColumn(name = "link_id"),
+            inverseJoinColumns = @JoinColumn(name = "flag_id"))
     private List<Flag> flags;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     public Integer getId() {
